@@ -58,14 +58,14 @@ export default function ProductPage({ params }: ProductPageProps) {
   )
 }
 
-'use client' // ¡Añade esta línea!
+'use client' // This line must be the FIRST line in the file, and only appear ONCE.
 
 import { useState, useEffect } from 'react'
-import { products } from '@/lib/data' // Solo una importación de 'products'
+import { products } from '@/lib/data' // Only one import for 'products'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
-import { Product } from '@/types/product' // Importa el tipo Product
+import { Product } from '@/types/product' // Import the Product type
 
 interface ProductDetailPageProps {
   params: {
@@ -84,13 +84,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     if (foundProduct) {
       setProduct(foundProduct)
     } else {
-      // Si el producto no se encuentra, redirige a la página 404
+      // If the product is not found, redirect to the 404 page
       notFound() 
     }
   }, [id])
 
   if (!product) {
-    // Muestra un estado de carga o simplemente null mientras se busca el producto
+    // Show a loading state or simply null while the product is being fetched
     return null 
   }
 
