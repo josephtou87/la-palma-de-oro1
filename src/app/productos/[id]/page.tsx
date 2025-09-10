@@ -61,7 +61,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 'use client' // ¡Añade esta línea!
 
 import { useState, useEffect } from 'react'
-import { products } from '@/lib/data'
+import { products } from '@/lib/data' // Solo una importación de 'products'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
