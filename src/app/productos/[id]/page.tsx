@@ -84,19 +84,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     if (foundProduct) {
       setProduct(foundProduct)
     } else {
-      // Esta es la línea 12 (aproximadamente)
-      // Asegúrate de que notFound() se llame dentro de un bloque condicional
-      // o que sea la última instrucción en un camino de ejecución.
-      // Tu código actual ya lo hace, por lo que la advertencia podría ser un falso positivo
-      // o una regla muy estricta de ESLint.
+      // Si el producto no se encuentra, redirige a la página 404
       notFound() 
     }
   }, [id])
 
   if (!product) {
-    // Esta es la línea 61 (aproximadamente)
-    // Retornar null es una práctica común en React para indicar que el componente
-    // aún no está listo para renderizarse o que no hay datos.
+    // Muestra un estado de carga o simplemente null mientras se busca el producto
     return null 
   }
 
