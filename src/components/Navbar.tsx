@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { ShoppingCartIcon, Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
 import { useState } from 'react'
-import { useTheme } from '@/context/ThemeContext' // Importa useTheme
+import { useTheme } from '@/context/ThemeContext' // Usa el hook useTheme
+import Image from 'next/image' // Importación correcta del componente Image
 
 export default function Navbar() {
   const { totalItems } = useCart()
