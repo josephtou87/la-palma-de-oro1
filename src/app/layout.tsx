@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import Navbar from '@/components/Navbar'
+// Se elimina la importación de Navbar ya que no se utiliza
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import { ThemeProvider } from '@/context/ThemeContext'
@@ -16,23 +17,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="es">
-      {/* Clases para el modo claro/oscuro en el body */}
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50`}>
-        {/* Envuelve toda la aplicación con ThemeProvider */}
+      <body className={`${inter.className} flex flex-col min-h-screen bg-gray-50`}>
         <ThemeProvider>
-          {/* Envuelve la aplicación con CartProvider */}
           <CartProvider>
-            <Navbar />
-            <main className="min-h-screen">
+            <Header />
+            <main className="flex-grow">
               {children}
             </main>
             <Footer />
-            <Toaster position="bottom-center" />
+            <Toaster position="bottom-right" />
           </CartProvider>
         </ThemeProvider>
       </body>
