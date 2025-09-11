@@ -1,38 +1,49 @@
-'use client' // ¡Añade esta línea!
+'use client'
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
-type Theme = 'light' | 'dark'
-
+// Define el tipo para el contexto del tema
 interface ThemeContextType {
-  theme: Theme
+  theme: string
   toggleTheme: () => void
 }
 
+// Crea el contexto con un valor por defecto (que será sobrescrito por el Provider)
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light')
-  
-  useEffect(() => {
-    // Cargar tema desde localStorage
-    const savedTheme = localStorage.getItem('theme') as Theme | null
-    if (savedTheme) {
-      setTheme(savedTheme)
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark')
-      document.documentElement.classList.add('dark')
+// Define las props para el ThemeProvider
+interface ThemeProviderProps {
+  children: ReactNode
+}
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  // Inicializa el estado del tema. Intenta obtenerlo de localStorage, si no, usa 'light'.
+  const [theme, setTheme] = useState<string>(() => {
+    if (typeof window !== 'undefined') { // Asegura que localStorage solo se acceda en el cliente
+      return localStorage.getItem('theme') || 'light'
     }
-  }, [])
-  
+    return 'light'
+  })
+
+  // Efecto para aplicar la clase 'dark' al <html> y guardar el tema en localStorage
+  useEffect(() => {
+    const root = window.document.documentElement
+    if (theme === 'dark') {
+      root.classList.add('dark')
+    } else {
+      root.classList.remove('dark')
+    }
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme)
+    }
+  }, [theme])
+
+  // Función para alternar el tema
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-    document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    localStorage.setItem('theme', newTheme)
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
   }
-  
+
+  // Provee el contexto a los componentes hijos
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
@@ -40,7 +51,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export function useTheme() {
+// Hook personalizado para usar el contexto del tema
+export const useTheme = () => {
   const context = useContext(ThemeContext)
   if (context === undefined) {
     throw new Error('useTheme debe usarse dentro de un ThemeProvider')
