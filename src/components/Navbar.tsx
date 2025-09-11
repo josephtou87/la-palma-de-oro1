@@ -18,7 +18,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo y nombre */}
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold text-yellow-800">La Palma de Oro</span>
+            <span className="text-xl font-bold text-yellow-800"></span>
           </Link>
 
           {/* Enlaces de navegación - Desktop */}

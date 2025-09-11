@@ -39,10 +39,10 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Síguenos</h3>
             <div className="space-y-2">
-              <p>WhatsApp: +52 123 456 7890</p>
+              <p>WhatsApp: +52 756 122 3464</p>
               <p>Email: contacto@lapalmadeoro.com</p>
               <div className="flex space-x-4 mt-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
+                <a href="https://www.facebook.com/share/19kRfRRaKM/" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
                   Facebook
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
