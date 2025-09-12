@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 
-const WELCOME_TEXT = "Bienvenido a Sombrerería La Palma de Oro Artesanía con Estilo"
+const WELCOME_TEXT = "Bienvenido a Sombrerería La Palma de Oro Artesanía con Estilo" // Texto sin el guion
 const TYPING_SPEED_MS = 60 // Velocidad de escritura por carácter (milisegundos)
 const BLINK_SPEED_MS = 500 // Velocidad de parpadeo del cursor (milisegundos)
 const DISPLAY_DURATION_MS = 6000 // Duración total del banner antes de desaparecer (milisegundos)

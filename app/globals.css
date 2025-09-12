@@ -12,11 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #2C1A1A; /* Un marrón oscuro para el fondo en modo oscuro */
-    --foreground: #FDF8F0; /* El beige claro para el texto en modo oscuro */
-  }
+/* ESTO ES LO QUE CAMBIA: Ahora los estilos oscuros se aplican cuando el <html> tiene la clase 'dark' */
+html.dark {
+  --background: #2C1A1A; /* Un marrón oscuro para el fondo en modo oscuro */
+  --foreground: #FDF8F0; /* El beige claro para el texto en modo oscuro */
 }
 
 body {
