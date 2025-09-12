@@ -12,8 +12,8 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="La Palma de Oro Logo"
-            width={64} // Aumentado de 50 a 64 para mayor visibilidad
-            height={64} // Aumentado de 50 a 64
+            width={84} // Aumentado de 50 a 64 para mayor visibilidad
+            height={84} // Aumentado de 50 a 64
             className="rounded-full flex-shrink-0" // Asegura que la imagen no se encoja
           />
           <span className="text-3xl font-bold text-amber-950"> {/* Texto un poco más grande para que coincida con el logo */}
