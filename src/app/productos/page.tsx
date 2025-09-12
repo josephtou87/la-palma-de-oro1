@@ -37,7 +37,7 @@ export default function ProductsPage() {
       return products
     }
     return products.filter(product => product.category === selectedCategory)
-  }, [selectedCategory, products])
+  }, [selectedCategory]) // 'products' removed from dependency array
 
   return (
     <div className="container mx-auto px-4 py-8">

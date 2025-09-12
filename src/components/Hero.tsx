@@ -1,8 +1,8 @@
 'use client' // ¡Añade esta línea!
 
 import Link from 'next/link' // Asegúrate de que Link esté importado
-import Image from 'next/image'
-import { motion } from 'framer-motion'
+// import Image from 'next/image' // Remove this line
+// import { motion } from 'framer-motion' // Remove this line
 
 export default function Hero() {
   return (
