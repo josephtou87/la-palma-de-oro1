@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FDF8F0; /* Un beige muy claro */
+  --foreground: #4A2C2A; /* Un marrón oscuro para el texto */
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #2C1A1A; /* Un marrón oscuro para el fondo en modo oscuro */
+    --foreground: #FDF8F0; /* El beige claro para el texto en modo oscuro */
   }
 }
 

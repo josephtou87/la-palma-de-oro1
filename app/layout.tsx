@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'La Palma de Oro - Sombreros Artesanales',
   description: 'Los mejores sombreros de palma artesanales en México',
+  icons: { // Añade esta sección para el favicon
+    icon: '/logo.png', // Ruta a tu logo en la carpeta public
+  },
 }
 
 export default function RootLayout({

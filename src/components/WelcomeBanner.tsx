@@ -78,7 +78,7 @@ export default function WelcomeBanner() {
           animate={{ y: "0%", opacity: 1 }}    // Estado animado: en la pantalla y opaco
           exit={{ y: "-100%", opacity: 0 }}     // Estado de salida: vuelve a salir de la pantalla y transparente
           transition={{ duration: 0.5 }}        // Duración de la animación de entrada/salida
-          className="fixed top-0 left-0 w-full bg-black text-white flex items-center justify-center p-4 z-50"
+          className="fixed top-0 left-0 w-full bg-amber-950 text-amber-50 flex items-center justify-center p-4 z-50" // Fondo marrón oscuro, texto beige claro
         >
           <motion.span
             className="text-lg md:text-xl lg:text-2xl font-semibold text-center whitespace-pre-wrap"
