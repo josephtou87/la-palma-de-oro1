@@ -44,7 +44,7 @@ export default function ProductsPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {filteredProducts.map((product) => ( {/* Usa filteredProducts */}
+        {filteredProducts.map((product) => ( // Usa filteredProducts
           <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-[1.02]">
             <Link href={`/productos/${product.id}`}>
               <div className="relative h-64">
