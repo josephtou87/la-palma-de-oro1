@@ -1,12 +1,29 @@
-import { products } from '@/lib/data'
+'use client'
+
+import { products, Product } from '@/lib/data' // Asegúrate de importar Product
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCart } from '@/context/CartContext' // Necesario si quieres añadir botones de "Agregar al Carrito"
-import { useState, useMemo } from 'react' // Importa useState y useMemo
+import { useCart } from '@/context/CartContext'
+import { useState, useMemo } from 'react'
+import ProductQuickViewModal from '@/components/ProductQuickViewModal' // Importa el nuevo modal
 
 export default function ProductsPage() {
-  const { addItem } = useCart() // Hook para añadir al carrito
-  const [selectedCategory, setSelectedCategory] = useState('Todos') // Nuevo estado para el filtro de categoría
+  const { addItem } = useCart()
+  const [selectedCategory, setSelectedCategory] = useState('Todos')
+  const [isModalOpen, setIsModalOpen] = useState(false) // Estado para controlar la apertura del modal
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null) // Estado para el producto seleccionado
+
+  // Función para abrir el modal con un producto específico
+  const openQuickViewModal = (product: Product) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  // Función para cerrar el modal
+  const closeQuickViewModal = () => {
+    setIsModalOpen(false)
+    setSelectedProduct(null)
+  }
 
   // Obtener todas las categorías únicas
   const categories = useMemo(() => {
@@ -44,18 +61,30 @@ export default function ProductsPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {filteredProducts.map((product) => ( // Usa filteredProducts
-          <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-[1.02]">
-            <Link href={`/productos/${product.id}`}>
-              <div className="relative h-64">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                />
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] group">
+            {/* Hacemos la imagen clickeable para abrir el modal */}
+            <div className="relative h-64 cursor-pointer" onClick={() => openQuickViewModal(product)}>
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+              />
+              {/* Botón de Vista Rápida que aparece al pasar el ratón */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Evita que el clic se propague al div padre y abra el Link
+                    openQuickViewModal(product);
+                  }}
+                  className="bg-white text-amber-950 px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors"
+                >
+                  Vista Rápida
+                </button>
               </div>
-            </Link>
+            </div>
+
             <div className="p-4">
               <Link href={`/productos/${product.id}`}>
                 <h2 className="text-xl font-semibold mb-2 text-amber-950 dark:text-amber-50">{product.name}</h2>
@@ -75,6 +104,13 @@ export default function ProductsPage() {
           </div>
         ))}
       </div>
+
+      {/* Renderiza el modal de Vista Rápida */}
+      <ProductQuickViewModal
+        isOpen={isModalOpen}
+        onClose={closeQuickViewModal}
+        product={selectedProduct}
+      />
     </div>
   )
 }

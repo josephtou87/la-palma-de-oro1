@@ -2,14 +2,14 @@ import Hero from '@/components/Hero'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import FloatingContactButtons from '@/components/FloatingContactButtons'
 import WelcomeBanner from '@/components/WelcomeBanner'
-import ImageCarousel from '@/components/ImageCarousel' // Importa el nuevo componente
+import ImageCarousel from '@/components/ImageCarousel'
 
 export default function Home() {
   return (
     <>
       <WelcomeBanner />
-      <Hero />
-      <ImageCarousel /> {/* Añade el carrusel aquí */}
+      <ImageCarousel /> {/* El carrusel ahora aparece primero */}
+      <Hero />          {/* Luego la sección Hero */}
       <FeaturedProducts />
       <FloatingContactButtons />
     </>
