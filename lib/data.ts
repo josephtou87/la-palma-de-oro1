@@ -1,5 +1,3 @@
-import { Product } from '@/lib/data';
-
 // Asegúrate de que esta interfaz esté definida y EXPORTADA en este archivo
 export interface Product {
   id: string;
