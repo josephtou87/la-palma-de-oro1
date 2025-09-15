@@ -6,6 +6,8 @@ export interface Product {
   price: number;
   image: string;
   category: string;
+  // Añade la propiedad 'featured' aquí
+  featured?: boolean; // Hacemos que sea opcional, ya que no todos los productos serán destacados
 }
 
 // Tu array de productos debería usar esta interfaz
@@ -16,7 +18,8 @@ export const products: Product[] = [
     description: 'Elegante sombrero de paja tejido a mano, perfecto para el verano.',
     price: 45.00,
     image: '/images/sombrero1.jpg',
-    category: 'Paja'
+    category: 'Paja',
+    featured: true // Ejemplo: este producto es destacado
   },
   {
     id: '2',
@@ -40,7 +43,8 @@ export const products: Product[] = [
     description: 'Resistente sombrero de cuero, estilo vaquero auténtico.',
     price: 90.00,
     image: '/images/sombrero4.jpg',
-    category: 'Cuero'
+    category: 'Cuero',
+    featured: true // Ejemplo: este producto también es destacado
   },
   {
     id: '5',
