@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { ShoppingCartIcon, Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTheme } from '@/context/ThemeContext' // Usa el hook useTheme
-// import Image from 'next/image' // Importación correcta del componente Image - ELIMINADA
+import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -44,7 +44,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo and text */}
           <Link href="/" className="flex items-center">
-            <img src="/logo.png" alt="La Palma de Oro Logo" className="h-12 w-12 mr-3" />
+            <Image
+              src="/logo.png"
+              alt="La Palma de Oro Logo"
+              width={48}
+              height={48}
+              className="h-12 w-12 mr-3"
+              priority
+            />
             <div className="flex flex-col justify-center">
               <span className="text-2xl font-bold text-yellow-800 leading-tight">La Palma de Oro</span>
               <span className="text-xs text-gray-600 leading-tight">

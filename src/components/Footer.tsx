@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function Footer() {
   // Placeholder exchange rates (replace with API if needed)
@@ -16,9 +17,9 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold mb-2">Enlaces Rápidos</h3>
           <ul className="space-y-1">
-            <li><a href="/productos" className="hover:text-amber-700">Catálogo</a></li>
-            <li><a href="/sobre-nosotros" className="hover:text-amber-700">Sobre Nosotros</a></li>
-            <li><a href="/contacto" className="hover:text-amber-700">Contacto</a></li>
+            <li><Link href="/productos/">Productos</Link></li>
+            <li><Link href="/sobre-nosotros" className="hover:text-amber-700">Sobre Nosotros</Link></li>
+            <li><Link href="/contacto" className="hover:text-amber-700">Contacto</Link></li>
           </ul>
         </div>
         <div>
