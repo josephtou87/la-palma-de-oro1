@@ -44,23 +44,25 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo and text */}
           <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              alt="La Palma de Oro Logo"
-              width={48}
-              height={48}
-              className="h-12 w-12 mr-3"
-              priority
-            />
-            <div className="flex flex-col justify-center">
-              <span className="text-2xl font-bold text-yellow-800 leading-tight">La Palma de Oro</span>
-              <span className="text-xs text-gray-600 leading-tight">
-                {language === 'es'
-                  ? 'Elegancia y tradición en cada sombrero. Descubre nuestra colección artesanal.'
-                  : language === 'en'
-                  ? 'Elegance and tradition in every hat. Discover our handcrafted collection.'
-                  : '每一顶帽子都彰显优雅与传统。探索我们的手工艺系列。'}
-              </span>
+            <div className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="La Palma de Oro Logo"
+                width={48}
+                height={48}
+                className="h-12 w-12 mr-3"
+                priority
+              />
+              <div className="flex flex-col justify-center">
+                <span className="text-2xl font-bold text-yellow-800 leading-tight">La Palma de Oro</span>
+                <span className="text-xs text-gray-600 leading-tight">
+                  {language === 'es'
+                    ? 'Elegancia y tradición en cada sombrero. Descubre nuestra colección artesanal.'
+                    : language === 'en'
+                    ? 'Elegance and tradition in every hat. Discover our handcrafted collection.'
+                    : '每一顶帽子都彰显优雅与传统。探索我们的手工艺系列。'}
+                </span>
+              </div>
             </div>
           </Link>
           {/* Enlaces de navegación - Desktop */}
