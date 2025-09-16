@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState, useEffect, ReactNode } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface HeroProps {
   images: string[];
@@ -11,6 +12,21 @@ interface HeroProps {
 
 export default function Hero({ images, children }: HeroProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { language } = useLanguage();
+
+  // Las traducciones para el banner principal ya no son necesarias aquí si se quita el texto
+  // const t = {
+  //   titulo: {
+  //     es: 'La Palma de Oro',
+  //     en: 'La Palma de Oro',
+  //     zh: 'La Palma de Oro'
+  //   },
+  //   descripcion: {
+  //     es: 'Elegancia y tradición en cada sombrero. Descubre nuestra colección artesanal.',
+  //     en: 'Elegance and tradition in every hat. Discover our handcrafted collection.',
+  //     zh: '每一顶帽子都彰显优雅与传统。探索我们的手工艺系列。'
+  //   }
+  // };
 
   useEffect(() => {
     if (images.length === 0) return;
@@ -33,7 +49,10 @@ export default function Hero({ images, children }: HeroProps) {
   if (!images || images.length === 0) {
     return (
       <section className="relative h-screen w-full flex items-center justify-center bg-gray-200 dark:bg-gray-800">
-        {children}
+        <div>
+          {/* Se eliminan el título y la descripción */}
+          {children}
+        </div>
       </section>
     );
   }
@@ -55,21 +74,24 @@ export default function Hero({ images, children }: HeroProps) {
 
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white bg-opacity-30 rounded-full text-white hover:bg-opacity-50 transition-colors z-20"
+        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-gray-800 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 transition-colors z-20"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="h-6 w-6" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white bg-opacity-30 rounded-full text-white hover:bg-opacity-50 transition-colors z-20"
+        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-gray-800 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 transition-colors z-20"
         aria-label="Next image"
       >
         <ChevronRightIcon className="h-6 w-6" />
       </button>
 
       <div className="absolute inset-0 flex items-center justify-center text-center z-10">
-        {children}
+        <div>
+          {/* Se eliminan el título y la descripción */}
+          {children}
+        </div>
       </div>
     </section>
   );

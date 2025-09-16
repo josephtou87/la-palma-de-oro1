@@ -6,17 +6,11 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import { ThemeProvider } from '@/context/ThemeContext'
-import { LanguageProvider } from '@/context/LanguageContext';
+import { LanguageProvider } from '@/context/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'La Palma de Oro - Sombreros Artesanales',
-  description: 'Los mejores sombreros de palma artesanales en México',
-  icons: { // Añade esta sección para el favicon
-    icon: '/logo.png', // Ruta a tu logo en la carpeta public
-  },
-}
+// El bloque de metadata ha sido eliminado
 
 export default function RootLayout({
   children,

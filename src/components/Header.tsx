@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 export default function Header() {
   return (
     <header className="bg-white dark:bg-gray-900 shadow-md p-4 flex items-center justify-between">
+      {/* Elimina este bloque */}
+      {/* 
       <div className="flex items-center">
         <Link href="/" className="flex items-center">
           <Image
@@ -44,6 +46,8 @@ export default function Header() {
           </div>
         </Link>
       </div>
+      */}
+      {/* Solo deja esto */}
       <div className="flex items-center space-x-4">
         <Navbar />
         <ThemeToggle />
