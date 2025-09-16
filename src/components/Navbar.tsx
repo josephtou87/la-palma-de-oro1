@@ -51,20 +51,20 @@ export default function Navbar() {
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-md dark:shadow-lg relative"> {/* Ajustado para modo oscuro */}
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20"> {/* Ajustada la altura para móvil */}
           {/* Branding block: logo + text, left-aligned and vertically centered */}
-          <div className="flex items-center"> {/* Eliminado min-w-[320px] para mejor adaptabilidad */}
+          <div className="flex items-center">
             <Image
               src="/logo.png"
               alt="La Palma de Oro Logo"
               width={96}
               height={96}
-              className="h-24 w-24 mr-3"
+              className="h-16 w-16 sm:h-24 sm:w-24 mr-2 sm:mr-3" // Logo más pequeño en móvil
               priority
             />
             <div className="flex flex-col justify-center">
-              <span className="text-2xl font-bold text-yellow-800 dark:text-yellow-400 leading-tight">La Palma de Oro</span> {/* Ajustado para modo oscuro */}
-              <span className="text-xs text-gray-600 dark:text-gray-400 leading-tight"> {/* Ajustado para modo oscuro */}
+              <span className="text-xl sm:text-2xl font-bold text-yellow-800 dark:text-yellow-400 leading-tight">La Palma de Oro</span> {/* Texto del logo más pequeño en móvil */}
+              <span className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
                 {language === 'es'
                   ? 'Elegancia y tradición en cada sombrero. Descubre nuestra colección artesanal.'
                   : language === 'en'
@@ -74,44 +74,44 @@ export default function Navbar() {
             </div>
           </div>
           {/* Enlaces de navegación - Desktop */}
-          <div className="hidden md:flex items-center space-x-6"> {/* Reducido space-x-8 a space-x-6 */}
-            <Link href="/" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400"> {/* Eliminado style={{ minWidth: 90, textAlign: 'center' }} */}
+          <div className="hidden md:flex items-center space-x-6">
+            <Link href="/" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400">
               {language === 'es' ? 'Inicio' : language === 'en' ? 'Home' : '首页'}
             </Link>
-            <Link href="/productos" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400"> {/* Eliminado style={{ minWidth: 110, textAlign: 'center' }} */}
+            <Link href="/productos" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400">
               {language === 'es' ? 'Productos' : language === 'en' ? 'Products' : '产品'}
             </Link>
-            <Link href="/nosotros" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400"> {/* Eliminado style={{ minWidth: 110, textAlign: 'center' }} */}
+            <Link href="/nosotros" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400">
               {language === 'es' ? 'Nosotros' : language === 'en' ? 'About Us' : '关于我们'}
             </Link>
-            <Link href="/contacto" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400"> {/* Eliminado style={{ minWidth: 110, textAlign: 'center' }} */}
+            <Link href="/contacto" className="text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400">
               {language === 'es' ? 'Contacto' : language === 'en' ? 'Contact' : '联系'}
             </Link>
           </div>
           {/* Cart, search icon, and language selector grouped to the right */}
           <div className="flex items-center ml-auto">
-            {/* Botón de alternar tema - REINTRODUCIDO Y POSICIONADO */}
+            {/* Botón de alternar tema */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 mr-2" // Ajustado para modo oscuro
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 mr-1 sm:mr-2" // Margen ajustado para móvil
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
-                <MoonIcon className="h-6 w-6 text-gray-700 dark:text-gray-300" /> // Ajustado para modo oscuro
+                <MoonIcon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
               ) : (
-                <SunIcon className="h-6 w-6 text-yellow-500 dark:text-yellow-300" /> // Ajustado para modo oscuro
+                <SunIcon className="h-6 w-6 text-yellow-500 dark:text-yellow-300" />
               )}
             </button>
 
-            {/* Selector de idioma movido aquí, más a la izquierda/arriba */}
-            <div className="flex items-center mr-4"> {/* Ajustado el margen para separación */}
-              <span className="font-semibold text-sm text-gray-700 dark:text-gray-300 mr-2"> {/* Ajustado para modo oscuro */}
+            {/* Selector de idioma */}
+            <div className="flex items-center mr-2 sm:mr-4"> {/* Margen ajustado para móvil */}
+              <span className="font-semibold text-sm text-gray-700 dark:text-gray-300 mr-1 sm:mr-2"> {/* Margen ajustado para móvil */}
                 {language === 'es' ? 'Idiomas:' : language === 'en' ? 'Languages:' : '语言:'}
               </span>
               <select
                 value={language}
                 onChange={handleLanguageChange}
-                className="border rounded px-2 py-1 text-sm bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" // Ajustado para modo oscuro
+                className="border rounded px-1 py-0.5 text-xs sm:px-2 sm:py-1 sm:text-sm bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" // Tamaño y padding ajustados para móvil
               >
                 <option value="es">Español</option>
                 <option value="en">English</option>
@@ -122,7 +122,7 @@ export default function Navbar() {
             {/* Carrito */}
             <Link
               href="/carrito"
-              className="flex items-center text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400 mr-2 md:mr-0" // Ajustado para modo oscuro
+              className="flex items-center text-gray-700 hover:text-yellow-600 dark:text-gray-300 dark:hover:text-yellow-400 mr-1 sm:mr-2 md:mr-0" // Margen ajustado para móvil
             >
               <div className="relative">
                 <ShoppingCartIcon className="h-6 w-6" />
@@ -138,22 +138,22 @@ export default function Navbar() {
             </Link>
 
             {/* Barra de búsqueda */}
-            <div className="relative flex items-center ml-2">
+            <div className="relative flex items-center ml-1 sm:ml-2"> {/* Margen ajustado para móvil */}
               {showSearchInput && (
-                <form onSubmit={handleSearch} className="flex items-center border rounded px-2 py-1 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600"> {/* Ajustado para modo oscuro */}
+                <form onSubmit={handleSearch} className="flex items-center border rounded px-1 py-0.5 sm:px-2 sm:py-1 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600"> {/* Padding ajustado para móvil */}
                   <input
-                    ref={searchInputRef} // Asignar la ref al input
+                    ref={searchInputRef}
                     type="text"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
                     placeholder={
                       language === 'es'
                         ? "Buscar productos..."
-                        : language === 'en' // Corregido: se añadió la comilla simple de cierre
+                        : language === 'en'
                         ? "Search products..."
                         : "搜索产品..."
                     }
-                    className="bg-transparent outline-none px-2 text-sm w-32 md:w-48 text-gray-900 dark:text-gray-100" // Ajustado para modo oscuro
+                    className="bg-transparent outline-none px-1 text-sm w-24 sm:w-32 md:w-48 text-gray-900 dark:text-gray-100" // Ancho y padding ajustados para móvil
                   />
                   <button type="submit" className="text-amber-700 dark:text-amber-300 p-1">
                     <MagnifyingGlassIcon className="h-5 w-5" />
@@ -163,7 +163,7 @@ export default function Navbar() {
               {/* Botón para mostrar/ocultar la búsqueda */}
               <button
                 type="button"
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" // Ajustado para modo oscuro
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
                 aria-label={language === 'es' ? "Buscar" : language === 'en' ? "Search" : "搜索"}
                 onClick={() => setShowSearchInput(!showSearchInput)}
               >
@@ -173,7 +173,7 @@ export default function Navbar() {
 
             {/* Botón de menú móvil */}
             <button
-              className="md:hidden text-gray-700 dark:text-gray-300 ml-2" // Ajustado para modo oscuro
+              className="md:hidden text-gray-700 dark:text-gray-300 ml-1 sm:ml-2" // Margen ajustado para móvil
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -185,37 +185,37 @@ export default function Navbar() {
           </div>
         </div>
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t dark:border-gray-700 px-4"> {/* Ajustado para modo oscuro */}
-            <div className="flex flex-col space-y-3"> {/* Reducido space-y-4 a space-y-3 */}
+          <div className="md:hidden py-4 border-t dark:border-gray-700 px-4">
+            <div className="flex flex-col space-y-3">
               <Link
                 href="/"
-                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400" // Reducido py-2 a py-1.5
+                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
               </Link>
               <Link
                 href="/productos"
-                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400" // Reducido py-2 a py-1.5
+                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Productos
               </Link>
               <Link
                 href="/nosotros"
-                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400" // Reducido py-2 a py-1.5
+                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Nosotros
               </Link>
               <Link
                 href="/contacto"
-                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400" // Reducido py-2 a py-1.5
+                className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contacto
               </Link>
-              {/* Carrito para móvil - AÑADIDO */}
+              {/* Carrito para móvil */}
               <Link
                 href="/carrito"
                 className="block text-gray-700 hover:text-yellow-600 py-1.5 w-full dark:text-gray-300 dark:hover:text-yellow-400"
@@ -224,15 +224,15 @@ export default function Navbar() {
                 {language === 'es' ? 'Carrito' : language === 'en' ? 'Cart' : '购物车'}
               </Link>
               {/* Language Selector for mobile */}
-              <div className="flex items-center mt-3 w-full"> {/* Cambiado mt-4 a mt-3 */}
-                <span className="font-semibold text-sm text-gray-700 dark:text-gray-300 mr-2"> {/* Ajustado para modo oscuro */}
+              <div className="flex items-center mt-3 w-full">
+                <span className="font-semibold text-sm text-gray-700 dark:text-gray-300 mr-2">
                   {language === 'es' ? 'Idiomas:' : language === 'en'
                   ? 'Languages:' : '语言:'}
                 </span>
                 <select
                   value={language}
                   onChange={handleLanguageChange}
-                  className="border rounded px-2 py-1 text-sm flex-grow bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" // Ajustado para modo oscuro
+                  className="border rounded px-2 py-1 text-sm flex-grow bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600"
                 >
                   <option value="es">Español</option>
                   <option value="en">English</option>
@@ -240,7 +240,7 @@ export default function Navbar() {
                 </select>
               </div>
               {/* Search Bar for mobile */}
-              <form onSubmit={handleSearch} className="flex items-center border rounded px-2 py-1 bg-gray-100 dark:bg-gray-800 mt-3 w-full border-gray-300 dark:border-gray-600"> {/* Cambiado mt-4 a mt-3 */}
+              <form onSubmit={handleSearch} className="flex items-center border rounded px-2 py-1 bg-gray-100 dark:bg-gray-800 mt-3 w-full border-gray-300 dark:border-gray-600">
                 <input
                   type="text"
                   value={search}
@@ -248,11 +248,11 @@ export default function Navbar() {
                   placeholder={
                     language === 'es'
                       ? "Buscar productos..."
-                      : language === 'en' // Corregido: se añadió la comilla simple de cierre
+                      : language === 'en'
                       ? "Search products..."
                       : "搜索产品..."
                   }
-                  className="bg-transparent outline-none px-2 text-sm flex-grow text-gray-900 dark:text-gray-100" // Ajustado para modo oscuro
+                  className="bg-transparent outline-none px-2 text-sm flex-grow text-gray-900 dark:text-gray-100"
                 />
                 <button type="submit" className="text-amber-700 dark:text-amber-300">
                   <MagnifyingGlassIcon className="h-5 w-5" />
