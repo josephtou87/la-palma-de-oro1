@@ -1,67 +1,51 @@
-import Link from 'next/link'
+import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
+  // Placeholder exchange rates (replace with API if needed)
+  const usdToMxn = 17.2; // Example value
+
   return (
-    <footer className="bg-yellow-800 text-white">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Información de la empresa */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">La Palma de Oro</h3>
-            <p className="text-yellow-100">
-              Artesanía y tradición en cada sombrero desde 1985
-            </p>
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 py-8 px-4 mt-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h2 className="text-lg font-bold mb-2">¡Venta de sombreros a todo México y extranjero!</h2>
+          <p className="mb-2">FÁBRICA MAYOREO Y MENUDEO</p>
+          <p className="mb-2">La Palma de Oro</p>
+          <p>Artesanía y tradición en cada sombrero desde 1985</p>
+        </div>
+        <div>
+          <h3 className="font-semibold mb-2">Enlaces Rápidos</h3>
+          <ul className="space-y-1">
+            <li><a href="/productos" className="hover:text-amber-700">Catálogo</a></li>
+            <li><a href="/sobre-nosotros" className="hover:text-amber-700">Sobre Nosotros</a></li>
+            <li><a href="/contacto" className="hover:text-amber-700">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-semibold mb-2">Síguenos</h3>
+          <div className="flex space-x-3 mb-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook className="text-xl hover:text-blue-600" /></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram className="text-xl hover:text-pink-500" /></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><FaTiktok className="text-xl hover:text-black" /></a>
           </div>
-
-          {/* Enlaces rápidos */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Enlaces Rápidos</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/productos" className="text-yellow-100 hover:text-white">
-                  Catálogo
-                </Link>
-              </li>
-              <li>
-                <Link href="/nosotros" className="text-yellow-100 hover:text-white">
-                  Sobre Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link href="/contacto" className="text-yellow-100 hover:text-white">
-                  Contacto
-                </Link>
-              </li>
-            </ul>
+          <div className="flex items-center space-x-2">
+            <FaWhatsapp className="text-green-500" />
+            <span>+52 756 122 3464</span>
           </div>
-
-          {/* Redes sociales y contacto */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Síguenos</h3>
-            <div className="space-y-2">
-              <p>WhatsApp: +52 756 122 3464</p>
-              <p>Email: contacto@lapalmadeoro.com</p>
-              <div className="flex space-x-4 mt-4">
-                <a href="https://www.facebook.com/share/19kRfRRaKM/" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
-                  Facebook
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
-                  Instagram
-                </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-yellow-100 hover:text-white">
-                  TikTok
-                </a>
-              </div>
-            </div>
+          <div className="flex items-center space-x-2 mt-1">
+            <FaEnvelope />
+            <span>contacto@lapalmadeoro.com</span>
           </div>
         </div>
-
-        <div className="mt-8 pt-8 border-t border-yellow-700 text-center">
-          <p className="text-yellow-100">
-            © {new Date().getFullYear()} La Palma de Oro. Todos los derechos reservados.
-          </p>
+        <div>
+          <h3 className="font-semibold mb-2">Tipo de Cambio</h3>
+          <p>USD/MXN: <span className="font-bold">${usdToMxn}</span></p>
+          {/* Puedes agregar aquí lógica para obtener el valor en tiempo real */}
         </div>
       </div>
+      <div className="text-center text-xs mt-8">
+        &copy; {new Date().getFullYear()} La Palma de Oro. Todos los derechos reservados.
+      </div>
     </footer>
-  )
+  );
 }
