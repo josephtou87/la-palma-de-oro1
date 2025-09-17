@@ -66,6 +66,8 @@ export default function Hero({ images, children }: HeroProps) {
           alt={`Carousel image ${index + 1}`}
           fill
           priority={index === 0}
+          // Añade la propiedad 'sizes' para optimizar la carga de imágenes
+          sizes="100vw" // La imagen siempre ocupará el 100% del ancho del viewport
           className={`object-cover transition-opacity duration-1000 ease-in-out ${
             index === currentImageIndex ? 'opacity-100' : 'opacity-0'
           }`}
